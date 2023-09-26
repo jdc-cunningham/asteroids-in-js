@@ -15,3 +15,7 @@ This is a free-form, new thing so I don't have to think too hard until I get to 
 10:20 PM
 
 cool I have a canvas, events, basic way to draw polygons
+
+11:17 PM
+
+pretty productive, now it's FTWD time

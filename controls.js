@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/15994325/get-degrees-from-ratio-via-tan
 // emit events
 const motionPixel = 1; // go forward 1 pixel
 
@@ -31,4 +32,48 @@ document.addEventListener('keypress', (e) => {
 
 document.addEventListener('click', (e) => {
   console.log(e.clientX, e.clientY);
+});
+
+canvas.addEventListener('mouseenter', () => {
+
+});
+
+canvas.addEventListener('mouseleave', () => {
+
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  const shipCenter = ship.position;
+  const mouseCoord = [e.clientX, e.clientY];
+
+  let degBase = 0;
+
+  if (mouseCoord[0] > shipCenter[0] && mouseCoord[1] < shipCenter[1]) {
+    degBase = 0;
+  }
+
+  if (mouseCoord[0] > shipCenter[0] && mouseCoord[1] > shipCenter[1]) {
+    degBase = 90;
+  }
+
+  if (mouseCoord[0] < shipCenter[0] && mouseCoord[1] > shipCenter[1]) {
+    degBase = 180;
+  }
+
+  if (mouseCoord[0] < shipCenter[0] && mouseCoord[1] < shipCenter[1]) {
+    degBase = 270;
+  }
+
+  const arcTan = Math.atan(
+    Math.abs(mouseCoord[0] - shipCenter[0]) /
+    Math.abs(mouseCoord[1] - shipCenter[1])
+  );
+
+  const mouseAngle = (arcTan * 180) / Math.PI;
+
+  ship.rotation = (mouseAngle + degBase).toFixed(0);
+
+  updateScene();
+
+  console.log((mouseAngle + degBase).toFixed(0));
 });

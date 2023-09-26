@@ -13,7 +13,7 @@ const ship = {
   ],
   center: [12.5, 25],
   rotation: 0, // deg,
-  position: [0, 0],
+  position: [300, 300],
   color: '#000000',
   lineWidth: 2,
 }

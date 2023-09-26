@@ -13,7 +13,7 @@ const ship = {
   ],
   center: [12.5, 25],
   rotation: 0, // deg,
-  position: [12.5, 25],
+  position: [0, 0],
   color: '#000000',
   lineWidth: 2,
 }
@@ -40,9 +40,9 @@ const draw = (ctx, item) => {
 
   item.vertices.forEach((point, index) => {
     if (index === 0) {
-      ctx.moveTo(point[0], point[1]); // could do obj x, y
+      ctx.moveTo(point[0] + item.position[0], point[1] + item.position[1]); // could do obj x, y
     } else {
-      ctx.lineTo(point[0], point[1]);
+      ctx.lineTo(point[0] + item.position[0], point[1] + item.position[1]);
     }
   });
 
@@ -55,3 +55,8 @@ const draw = (ctx, item) => {
 
 clearCanvas(ctx);
 draw(ctx, ship);
+
+const updateScene = () => {
+  clearCanvas(ctx);
+  draw(ctx, ship);
+}

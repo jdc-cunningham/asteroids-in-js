@@ -47,29 +47,45 @@ canvas.addEventListener('mousemove', (e) => {
   const mouseCoord = [e.clientX, e.clientY];
 
   let degBase = 0;
+  let ratio = 0;
 
-  if (mouseCoord[0] > shipCenter[0] && mouseCoord[1] < shipCenter[1]) {
+  if (mouseCoord[0] >= shipCenter[0] && mouseCoord[1] <= shipCenter[1]) {
     degBase = 0;
+
+    ratio = Math.atan(
+      Math.abs(mouseCoord[0] - shipCenter[0]) /
+      Math.abs(mouseCoord[1] - shipCenter[1])
+    );
   }
 
-  if (mouseCoord[0] > shipCenter[0] && mouseCoord[1] > shipCenter[1]) {
+  else if (mouseCoord[0] >= shipCenter[0] && mouseCoord[1] >= shipCenter[1]) {
     degBase = 90;
+
+    ratio = Math.atan(
+      Math.abs(mouseCoord[1] - shipCenter[1]) /
+      Math.abs(mouseCoord[0] - shipCenter[0])
+    );
   }
 
-  if (mouseCoord[0] < shipCenter[0] && mouseCoord[1] > shipCenter[1]) {
+  else if (mouseCoord[0] <= shipCenter[0] && mouseCoord[1] >= shipCenter[1]) {
     degBase = 180;
+
+    ratio = Math.atan(
+      Math.abs(mouseCoord[0] - shipCenter[0]) /
+      Math.abs(mouseCoord[1] - shipCenter[1])
+    );
   }
 
-  if (mouseCoord[0] < shipCenter[0] && mouseCoord[1] < shipCenter[1]) {
+  else {
     degBase = 270;
+
+    ratio = Math.atan(
+      Math.abs(mouseCoord[1] - shipCenter[1]) /
+      Math.abs(mouseCoord[0] - shipCenter[0])
+    );
   }
 
-  const arcTan = Math.atan(
-    Math.abs(mouseCoord[0] - shipCenter[0]) /
-    Math.abs(mouseCoord[1] - shipCenter[1])
-  );
-
-  const mouseAngle = (arcTan * 180) / Math.PI;
+  const mouseAngle = (ratio * 180) / Math.PI;
 
   ship.rotation = (mouseAngle + degBase).toFixed(0);
 

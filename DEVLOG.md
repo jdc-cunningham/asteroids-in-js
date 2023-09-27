@@ -1,4 +1,8 @@
+**09/26/2023**
 
+Got the mouse point/angle tracking working
+
+Started on vertex rotation
 
 ---
 

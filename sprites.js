@@ -60,3 +60,7 @@ const updateScene = () => {
   clearCanvas(ctx);
   draw(ctx, ship);
 }
+
+const rotatePoint = (vertex, angle) => {
+
+}

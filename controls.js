@@ -109,16 +109,14 @@ canvas.addEventListener('mousemove', (e) => {
   console.log('new', JSON.stringify(ship));
 
   ship.vertices.forEach(vertex => {
-    console.log('vert', vertex);
-    const rotationCenter = [0, 0];
-    console.log('rotcent', rotationCenter);
-    const radiusX = Math.abs(vertex[0] - rotationCenter[0]);
-    const radiusY = Math.abs(vertex[1] - rotationCenter[1]);
-    const radius = Math.sqrt((radiusX * radiusX) + (radiusY * radiusY));
-    console.log('rad', radius);
-    const newXVert = parseInt((radius * Math.cos(ship.rotation)).toFixed(0));
-    const newYVert = parseInt((radius * Math.sin(ship.rotation)).toFixed(0));
-    newVertices.push([newXVert, newYVert]);
+    // const rotationCenter = [25, 32]; // use positive numbers
+    // const rotateAngle = mouseAngle;
+    // const radiusX = Math.abs(vertex[0] - rotationCenter[0]);
+    // const radiusY = Math.abs(vertex[1] - rotationCenter[1]);
+    // const radius = Math.sqrt((radiusX * radiusX) + (radiusY * radiusY));
+    // const newXVert = parseInt((radius * Math.cos(rotateAngle)).toFixed(1));
+    // const newYVert = parseInt((radius * Math.sin(rotateAngle)).toFixed(1));
+    // newVertices.push([newXVert, newYVert]);
   });
   
   console.log(newVertices, ship);
